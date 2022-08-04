@@ -7,5 +7,5 @@ urlpatterns = [
     # start view
     path('', views.make_order, name='make_order'),
     path('order_list', views.order_list, name='order_list'),
-    path('report', views.repord_display, name='report')
+    path('report', views.report_display, name='report')
 ]

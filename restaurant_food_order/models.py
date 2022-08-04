@@ -49,8 +49,3 @@ class Order(models.Model):
 
     def __str__(self):
         return self.main_dish
-
-MainDish.objects.create(
-    dish_name='aaaa',
-    price='11.00'
-)

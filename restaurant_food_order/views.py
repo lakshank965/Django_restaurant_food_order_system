@@ -59,7 +59,7 @@ def order_list(request):
     return render(request, 'order_list.html', {'all_order': all_order})
 
 
-def repord_display(request):
+def report_display(request):
     if request.method == 'POST':
         form = MakeReportForm(request.POST)
 
