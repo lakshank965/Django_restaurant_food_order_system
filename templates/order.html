@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+<div class="container card">
+  <div class="card-header">
+    New order
+  </div>
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Main dish</label>
+            {{ form.main_type }}
+            <label class="form-label">Quantity</label>
+            {{ form.main_qty }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Side dish</label>
+            {{ form.side_type }}
+            <label class="form-label">Quantity</label>
+            {{ form.side_qty }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Deserts</label>
+            {{ form.desert_type }}
+            <label class="form-label">Quantity</label>
+            {{ form.desert_qty }}
+        </div>
+      <button type="submit" class="btn btn-warning text-black m-1">Submit</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

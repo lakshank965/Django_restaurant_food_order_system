@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="container card">
+  <div class="card-header">
+    Daily report
+  </div>
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Input date (YYYY-MM-DD)</label>
+            {{ form.date }}
+        </div>
+      <button type="submit" class="btn btn-warning text-black m-1">Submit</button>
+    </form>
+  </div>
+</div>
+<br>
+
+{% if date %}
+<div class="container card">
+  <div class="card-body">
+    <table class="table">
+        <tbody>
+            <tr class="m-1">
+                <td><h3>{{ date }} daily report.</h3></td>
+            </tr>
+            <tr>
+                <td><h5>Total revenue of the day : LKR {{ daily_revenue }}</h5></td>
+            </tr>
+            <tr>
+                <td><h5>Most famous main dish : </h5></td>
+            </tr>
+            <tr>
+                <td><h5>Most famous side dish : </h5></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Main Dish</th>
+                <th scope="col">Main Dish_qty</th>
+                <th scope="col">Side Dish</th>
+                <th scope="col">Side Dish_qty</th>
+                <th scope="col">Desert</th>
+                <th scope="col">Desert qty</th>
+                <th scope="col">Order Time</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Is pay</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in all_order %}
+            <tr class="m-1">
+                <td>{{ order.id }}</td>
+                <td>{{ order.main_dish }}</td>
+                <td>{{ order.main_dish_qty }}</td>
+                <td>{{ order.side_dish }}</td>
+                <td>{{ order.side_dish_qty }}</td>
+                <td>{{ order.desert }}</td>
+                <td>{{ order.desert_qty }}</td>
+                <td>{{ order.order_time }}</td>
+                <td>{{ order.amount }}</td>
+                <td>{% if order.is_pay %}
+                    Yes
+                    {% else %}
+                    No
+                    {% endif %}
+                </td>
+                <td>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ order.id }}" name="order_id" id="order_id">
+                        <input type="hidden" value="{% if order.is_pay %}False{% else %}True{% endif %}" name="pay" id="pay">
+                        <button class="btn btn-warning text-black m-1" type="submit" {% if order.is_pay %}disabled{% endif %}>Confirm Payment</button>
+                        <button class="btn btn-danger text-black m-1" type="submit" {% if order.is_pay %}{% else %}disabled{% endif %}>Cancel Payment</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
